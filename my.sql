@@ -41,3 +41,18 @@ SELECT title, author, amount, ROUND(price * 0.7,2) AS new_price FROM book;
 SELECT author, title,
     ROUND(IF(author LIKE 'Есенин%', price * 1.05, IF(author LIKE 'Булгаков%', price * 1.1, price)), 2) AS new_price
 FROM book;
+
+### 10 ###
+###Вывести автора, название  и цены тех книг, количество которых меньше 10.###
+SELECT author, title, price FROM book WHERE amount < 10;
+
+### 11 ###
+###Вывести название, автора,  цену  и количество всех книг, цена которых меньше 500 или больше 600, а стоимость всех экземпляров этих книг больше или равна 5000.###
+SELECT title, author, price, amount FROM book
+    WHERE amount * price >= 5000
+        AND (price < 500 OR price >= 600);
+
+### 12 ###
+###Вывести название и авторов тех книг, цены которых принадлежат интервалу от 540.50 до 800 (включая границы),  а количество или 2, или 3, или 5, или 7 .###
+SELECT title, author FROM book
+    WHERE price BETWEEN 540.50 AND 800 AND amount IN (2,3,5,7);
